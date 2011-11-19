@@ -1,0 +1,1 @@
+This VIM plugin is a small plugin to use PHP_CodeSniffer on the current PHP, JS or CSS file. Please refer to doc/vim-phpcs.txt for more information.

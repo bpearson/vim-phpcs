@@ -1,0 +1,27 @@
+--------------------------------
+ VIM - PHP_CodeSniffer Plugin
+--------------------------------
+
+Introduction
+---------------------------------
+vim-phpcs is a small plugin that will run PHP_CodeSniffer on the current file, and run the results in a vim window.
+
+Requirements
+---------------------------------
+To use this plugin, you need:
+- Vim
+- PHP_CodeSniffer 1.3+ (earlier versions may work but that depends on the return format of the code sniffer report).
+
+Installation of plugin.
+---------------------------------
+Copy plugin/phpcs.vim to ~/.vim/plugin/ and restart Vim. If a different standard is required, change the line let l:standard='PEAR' to the required standard.
+
+Usage.
+--------------------------------
+To use this plugin on the current file, simply type:
+:CodeSniff          (which shows both errors and warnings)
+:CodeSniffErrorOnly (which only shows errors)
+
+Version history
+--------------------------------
+0.1 - First release
