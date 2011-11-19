@@ -1,22 +1,59 @@
-"-----------------------------
-" VIM PHP Code Sniffer plugin
-"-----------------------------
+" File: phpcs.vim
+" Author: Benjamin Pearson (bpcode AT tpg DOT com DOT au)
+" Version: 0.2
+" Last Modified: November 19, 2011
+" Copyright: Copyright (C) 2011 Benjamin Pearson
+"            See LICENSE for more information
+"
+" The "Vim PhpCs" plugin runs PHP_CodeSniffer and displays the results
+" in Vim.
+"
+" Installation
+" ------------
+" 1. Obtain a copy of this plugin and place phpcs.vim in your Vim plugin
+"    directory and vim-phpcs.txt in the docs/ directory.
+" 2. Add let Vimphpcs_Standard='STANDARDNAME' to your .vimrc file.
+" 3. Restart Vim.
+" 4. You can now use the ":CodeSniff" command to run PHP_CodeSniffer
+"    and display the results.
+"
+" ****************** Do not modify after this line ************************
 
-if exists("g:loaded_VimPhpCs") || &cp
+if exists("g:loaded_Vimphpcs") || &cp
     finish
 endif
 
-let g:loaded_VimPhpCs = 0.1
+let g:loaded_Vimphpcs = 0.1
 let s:keepcpo         = &cpo
 set cpo&vim
 
+" Test for CodeSniffer
+if !exists('Vimphpcs_Phpcscmd')
+    if executable('phpcs')
+        let Vimphpcs_Phpcscmd='phpcs '
+    else
+        " Unable to find the CodeSniffer executable
+        echomsg 'Unable to find phpcs in the current PATH.'
+        echomsg 'Plugin not loaded.'
+        let &cpo = s:keepcpo
+        finish
+    endif
+endif
+
+" Options
+if !exists('Vimphpcs_Standard')
+    let Vimphpcs_Standard='PEAR'
+endif
+
 function! s:CodeSniff(extraarg)
-    let l:standard      = 'PEAR'
-    let l:extraarg      = a:extraarg
-	let l:filename      = @%
-	let l:phpcs_output  = system('phpcs '.l:extraarg.' --report=csv --standard='.l:standard.' '.l:filename)
-    let l:phpcs_output  = substitute(l:phpcs_output, '\\"', "'", 'g')
-	let l:phpcs_results = split(l:phpcs_output, "\n")
+    let l:extraarg       = a:extraarg
+	let l:filename       = @%
+    let l:phpcs_cmd      = g:Vimphpcs_Phpcscmd
+    let l:phpcs_standard = g:Vimphpcs_Standard
+    let l:phpcs_opts     = ' '.l:extraarg.' --report=csv --standard='.l:phpcs_standard
+	let l:phpcs_output   = system(l:phpcs_cmd.l:phpcs_opts.' '.l:filename)
+    let l:phpcs_output   = substitute(l:phpcs_output, '\\"', "'", 'g')
+	let l:phpcs_results  = split(l:phpcs_output, "\n")
 	unlet l:phpcs_results[0]
 	cexpr l:phpcs_results
 	copen

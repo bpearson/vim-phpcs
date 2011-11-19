@@ -14,7 +14,13 @@ To use this plugin, you need:
 
 Installation of plugin.
 ---------------------------------
-Copy plugin/phpcs.vim to ~/.vim/plugin/ and restart Vim. If a different standard is required, change the line let l:standard='PEAR' to the required standard.
+1. Obtain a copy of this plugin and place phpcs.vim in your Vim plugin
+   directory and vim-phpcs.txt in the docs/ directory.
+2. Add "let Vimphpcs_Standard='STANDARDNAME'" to your .vimrc file.
+   (where STANDARDNAME is the name/path of the standard)
+3. Restart Vim.
+4. You can now use the ":CodeSniff" command to run PHP_CodeSniffer
+   and display the results.
 
 Usage.
 --------------------------------
@@ -25,3 +31,4 @@ To use this plugin on the current file, simply type:
 Version history
 --------------------------------
 0.1 - First release
+0.2 - Added a check for the code sniffer binary and the standard as a config option (so you do not have to modify the plugin).
