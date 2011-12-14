@@ -46,7 +46,7 @@ if !exists('Vimphpcs_Standard')
 endif
 
 function! s:CodeSniff(extraarg)
-    let l:extraarg       = a:extraarg
+    let l:extraarg       = a:extraarg.' '.g:Vimphpcs_ExtraArgs
 	let l:filename       = @%
     let l:phpcs_cmd      = g:Vimphpcs_Phpcscmd
     let l:phpcs_standard = g:Vimphpcs_Standard
