@@ -45,6 +45,10 @@ if !exists('Vimphpcs_Standard')
     let Vimphpcs_Standard='PEAR'
 endif
 
+if !exists('Vimphpcs_ExtraArgs')
+    let Vimphpcs_ExtraArgs=''
+endif
+
 function! s:CodeSniff(extraarg)
     let l:extraarg       = a:extraarg.' '.g:Vimphpcs_ExtraArgs
 	let l:filename       = @%
