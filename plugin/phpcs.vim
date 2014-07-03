@@ -50,6 +50,7 @@ if !exists('Vimphpcs_ExtraArgs')
 endif
 
 function! s:CodeSniff(extraarg)
+    set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-\\,]
     let l:extraarg       = a:extraarg.' '.g:Vimphpcs_ExtraArgs
 	let l:filename       = @%
     let l:phpcs_cmd      = g:Vimphpcs_Phpcscmd
@@ -63,6 +64,5 @@ function! s:CodeSniff(extraarg)
 	copen
 endfunction
 
-set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-\\,]
 command! CodeSniff :call <SID>CodeSniff('')
 command! CodeSniffErrorOnly :call <SID>CodeSniff('-n')
