@@ -1,8 +1,8 @@
 " File: phpcs.vim
-" Author: Benjamin Pearson (bpcode AT tpg DOT com DOT au)
-" Version: 0.2
-" Last Modified: November 19, 2011
-" Copyright: Copyright (C) 2011 Benjamin Pearson
+" Author: Benjamin Pearson (bpearson AT squiz DOT com DOT au)
+" Version: 0.3
+" Last Modified: July 3, 2014
+" Copyright: Copyright (C) 2014 Benjamin Pearson
 "            See LICENSE for more information
 "
 " The "Vim PhpCs" plugin runs PHP_CodeSniffer and displays the results
@@ -23,7 +23,7 @@ if exists("g:loaded_Vimphpcs") || &cp
     finish
 endif
 
-let g:loaded_Vimphpcs = 0.1
+let g:loaded_Vimphpcs = 0.3
 let s:keepcpo         = &cpo
 set cpo&vim
 
@@ -63,6 +63,6 @@ function! s:CodeSniff(extraarg)
 	copen
 endfunction
 
-set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]\\,%*[0-9]
+set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-\\,]
 command! CodeSniff :call <SID>CodeSniff('')
 command! CodeSniffErrorOnly :call <SID>CodeSniff('-n')

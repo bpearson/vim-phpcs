@@ -32,3 +32,4 @@ Version history
 --------------------------------
 0.1 - First release
 0.2 - Added a check for the code sniffer binary and the standard as a config option (so you do not have to modify the plugin).
+0.3 - Bug fixes.
