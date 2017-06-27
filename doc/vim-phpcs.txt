@@ -14,8 +14,8 @@ To use this plugin, you need:
 
 Installation of plugin.
 ---------------------------------
-1. Obtain a copy of this plugin and place phpcs.vim in your Vim plugin
-   directory and vim-phpcs.txt in the docs/ directory.
+1. Obtain a copy of this plugin and place phpcs.vim in your Vim plugin/
+   directory and vim-phpcs.txt in the doc/ directory.
 2. Add "let Vimphpcs_Standard='STANDARDNAME'" to your .vimrc file.
    (where STANDARDNAME is the name/path of the standard)
 3. Restart Vim.
